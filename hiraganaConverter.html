@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <input type="text" id="input">
+    <script>
+    var english = ["a", "i", "u", "e", "o"];
+
+
+      function find(letter) {
+        var hiragana = ["あ", "い", "う", "え", "お", "か"];
+        var english = ["a", "i", "u", "e", "o", "ka"];
+
+        //Future: look at using the unicode characters for the japanese
+        // that would be good for a romaji-ifier perhaps
+
+        var input = document.getElementById('input');
+        var letter = input.value;
+        var specific = letter[letter.length-1];
+        if (english.indexOf(specific) >= 0) {
+          input.value[input.value.length-2] = "";
+          input.value += hiragana[english.indexOf(specific)];
+        } else {
+          console.log("Not Found");
+          // should wait for the next string
+        }
+      }
+
+      var input = document.getElementById('input');
+      input.onkeyup = find;
+
+
+    </script>
+
+    </body>
+</html>
