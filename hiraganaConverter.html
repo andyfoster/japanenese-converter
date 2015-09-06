@@ -3,10 +3,20 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <style media="screen">
+      body {
+        font-size: 2em;
+
+      }
+      input {
+        font-size: 2em;
+      }
+    </style>
   </head>
   <body>
 
-    <input type="text" id="input">
+    <input type="text" id="input" placeholder="Type romaji here">
+    <div id="box"></div>
     <script>
     var english = ["a", "i", "u", "e", "o"];
 
@@ -18,12 +28,15 @@
         //Future: look at using the unicode characters for the japanese
         // that would be good for a romaji-ifier perhaps
 
+        var box = document.getElementById('box');
+
         var input = document.getElementById('input');
         var letter = input.value;
         var specific = letter[letter.length-1];
         if (english.indexOf(specific) >= 0) {
-          input.value[input.value.length-2] = "";
+          // input.value[input.value.length-2] = "";
           input.value += hiragana[english.indexOf(specific)];
+          box.innerHTML += hiragana[english.indexOf(specific)];
         } else {
           console.log("Not Found");
           // should wait for the next string
